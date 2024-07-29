@@ -1,13 +1,37 @@
 import { Request, Response } from "express"
-const express = require('express');
+import express from 'express';
+import { json } from 'body-parser';
+import cookieSession from 'cookie-session';
+
+
 const app = express();
+app.set('trust proxy', true);
+app.use(json());
+app.use(
+  cookieSession({
+    signed: false,
+    secure: process.env.NODE_ENV !== 'test'
+  })
+);
 
 const PORT = process.env.PORT || 3000;
 
-app.get('/', (req: Request, res: Response) => {
-  res.send('Hello World');
-});
+const start = async () => {
+  // if (!process.env.JWT_KEY) {
+  //   throw new Error('JWT_KEY must be defined');
+  // }
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+  // try {
+  //   await mongoose.connect('mongodb://auth-mongo-srv:27017/auth');
+
+  //   console.log('Connected to MongoDb');
+  // } catch (err) {
+  //   console.error(err);
+  // }
+
+  app.listen(PORT, () => {
+    console.log(`Listening on port localhost:${PORT}`);
+  });
+};
+
+start();
