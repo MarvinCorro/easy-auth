@@ -1,0 +1,22 @@
+{
+  "name": "easy-auth",
+  "version": "1.0.0",
+  "description": "An easy way to set up an auth microservice",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon --exec ts-node ./index.ts"
+  },
+  "author": "Epiphany",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.0.0",
+    "nodemon": "^3.1.4",
+    "ts-node": "^10.9.2",
+    "tslib": "^2.6.3",
+    "typescript": "^5.5.4"
+  }
+}
